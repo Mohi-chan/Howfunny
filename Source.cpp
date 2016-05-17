@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-void BeforeGame(char (&player1)[11][11], char (&player2)[11][11]) { // готовит поля до расставления кораблей.
+void BeforeGame(char (&player1)[11][11], char (&player2)[11][11]) { // готовит поля до расставления кораблей. тест изменений
 	char k = 'a';
 	for (int i = 1; i < 11; i++) {
 		player1[i][0] = k;
