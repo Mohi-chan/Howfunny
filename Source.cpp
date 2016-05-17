@@ -11,7 +11,7 @@ void BeforeGame(char (&player1)[11][11], char (&player2)[11][11]) { // готовит п
 		k++;
 	}	
 }
-void ShowBoard(char(&player1)[11][11], char(&player2)[11][11]) {
+void ShowBoard(char(&player1)[11][11], char(&player2)[11][11]) {// heyheyhey
 	for (int i = 0; i < 11; i++) {
 		for (int j = 0; j < 11; j++) {
 			cout << player1[i][j] << ' ';
@@ -195,7 +195,7 @@ int main() {
 	
 	
 	
-
+cout << "test";
 
 	return 0;
 }
