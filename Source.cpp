@@ -158,6 +158,7 @@ void Filling(char(&player1)[11][11], char(&player2)[11][11]) {
 			flag = One(player1, a, b, c);
 			if (flag == false) { continue; }
 			else break;
+			// heyhey
 			
 			
 		
