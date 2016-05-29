@@ -164,6 +164,7 @@ bool One(char(&sometable)[11][11], char a, char b, char c) {
 	return flag;
 }
 void Filling(char(&player1)[11][11], char(&player2)[11][11]) {
+	// каждое заполнение - флаг. если поставленная точка ставится на существующий корабль или местность вокруг, то флаг срабатывает ложью и шаг заполнения выполняется снова
 	bool flag;
 	char a, b, c;
 	while (1) {
@@ -246,22 +247,37 @@ void Filling(char(&player1)[11][11], char(&player2)[11][11]) {
 	cout << "Change places with another player" << endl;
 	system("pause");
 		}
-void Move(char(&player1)[11][11], char(&player2)[11][11], char(&player1_mirr)[11][11] ) {
-	char a, b;
-	ShowBoard(player1, player2);
-	cout << "Make your move" << endl;
-	cin >> a >> b;
-	if (player2[a - 'a' + 1][b - 'a' + 1] == '*') {
-		player1_mirr[a - 'a' + 1][b - 'a' + 1] = 'X';
+void Move_One(char(&player1)[11][11], char(&player2)[11][11], char(&player2_mirr)[11][11], int &shipsp) {
+	bool flag=true;
+	while (1) {
+		char a, b;
+		system("cls");
+		ShowBoard(player1, player2_mirr);
+		cout << "Make your move" << endl;
+		cin >> a >> b;
+		if (player2[a - 'a' + 1][b - 'a' + 1] == '*') {
+			player2_mirr[a - 'a' + 1][b - 'a' + 1] = 'X';
+			shipsp = shipsp - 1;
+					}
+		else {
+			flag = false;
+			player2_mirr[a - 'a' + 1][b - 'a' + 1] = '0';
+			
+		}
+		if (shipsp == 0) { flag = false; }
+		if (flag == false) { break; }
+
+		system("cls");
+		ShowBoard(player1, player2_mirr);
 	}
-	else player1_mirr[a - 'a' + 1][b - 'a' + 1] = '0';
-	system("cls");
-	ShowBoard(player1, player1_mirr);
 }
+
 
 int main() {
 	// заполнение
 	char player1[11][11] = {' '}, player2[11][11] = { ' ' }, player1_mirr[11][11] = { ' ' }, player2_mirr[11][11] = { ' ' };
+	int shipsp1 = 20;
+	int shipsp2 = 20;
 	BeforeGame(player1,player2);
 	BeforeGame(player1_mirr, player2_mirr);
 	Filling(player1, player2_mirr);
@@ -270,7 +286,7 @@ int main() {
 	system("cls");
 	ShowBoard(player1, player2);
 	system("cls");
-	Move(player1, player2, player2_mirr);
+	Move_One(player1, player2, player2_mirr, shipsp2);
 
 	
 	
