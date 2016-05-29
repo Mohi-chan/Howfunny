@@ -11,7 +11,7 @@ void BeforeGame(char (&player1)[11][11], char (&player2)[11][11]) { // готовит п
 		k++;
 	}	
 }
-void ShowBoard(char(&player1)[11][11], char(&player2)[11][11]) {// heyheyhey
+void ShowBoard(char(&player1)[11][11], char(&player2)[11][11]) { //  показывает две доски на экране
 	for (int i = 0; i < 11; i++) {
 		for (int j = 0; j < 11; j++) {
 			cout << player1[i][j] << ' ';
@@ -24,84 +24,115 @@ void ShowBoard(char(&player1)[11][11], char(&player2)[11][11]) {// heyheyhey
 	}
 
 }
-void Four(char(&sometable)[11][11], char a, char b, char c) {
+bool Four(char(&sometable)[11][11], char a, char b, char c) {
+	bool flag = true;
 	switch (c) {
 	case 'r': {
 		for (int j = 0; j <4; j++) {
-			sometable[a - 'a' + 1][b - 'a' + 1 + j] = '*';
+			if (sometable[a - 'a' + 1][b - 'a' + 1 + j] == '.' || sometable[a - 'a' + 1][b - 'a' + 1 + j] == '*') { flag = false; }
+			if (flag != false) {
+				sometable[a - 'a' + 1][b - 'a' + 1 + j] = '*';
+			}
 		}
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 6; j++) {
-				if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+		if (flag != false) {
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 6; j++) {
+					if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+				}
 			}
 		}
 		break;
 	}
 	case 'd': {
 		for (int i = 0; i <4; i++) {
-			sometable[a - 'a' + 1 + i][b - 'a' + 1] = '*';
+			if (sometable[a - 'a' + 1 + i][b - 'a' + 1] == '.' || sometable[a - 'a' + 1 + i][b - 'a' + 1] == '*') { flag = false; }
+			if (flag != false) {
+				sometable[a - 'a' + 1 + i][b - 'a' + 1] = '*';
+			}
 		}
-		for (int i = 0; i < 6; i++) {
-			for (int j = 0; j < 3; j++) {
-				if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+		if (flag != false) {
+			for (int i = 0; i < 6; i++) {
+				for (int j = 0; j < 3; j++) {
+					if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+				}
 			}
 		}
 		break;
 	}
 	}
+	return flag;
 }
-void Three(char(&sometable)[11][11], char a, char b, char c) {
+bool Three(char(&sometable)[11][11], char a, char b, char c) {
+	bool flag = true;
 	switch (c) {
 	case 'r': {
 		for (int j = 0; j <3; j++) {
-			sometable[a - 'a' + 1][b - 'a' + 1 + j] = '*';
+			if (sometable[a - 'a' + 1][b - 'a' + 1 + j] == '.' || sometable[a - 'a' + 1][b - 'a' + 1 + j] == '*') { flag = false; }
+			if (flag != false) { sometable[a - 'a' + 1][b - 'a' + 1 + j] = '*'; }
 		}
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 5; j++) {
-				if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+		if (flag != false) {
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 5; j++) {
+					if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+				}
 			}
 		}
 		break;
 	}
 	case 'd': {
 		for (int i = 0; i <3; i++) {
-			sometable[a - 'a' + 1 + i][b - 'a' + 1] = '*';
+			if (sometable[a - 'a' + 1 + i][b - 'a' + 1] == '.' || sometable[a - 'a' + 1 + i][b - 'a' + 1] == '*') { flag = false; }
+			if (flag != false) {
+				sometable[a - 'a' + 1 + i][b - 'a' + 1] = '*';
+			}
 		}
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < 3; j++) {
-				if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+		if (flag != false) {
+			for (int i = 0; i < 5; i++) {
+				for (int j = 0; j < 3; j++) {
+					if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+				}
 			}
 		}
 		break;
 	}
 	}
+	return flag;
 }
-void Two(char(&sometable)[11][11], char a, char b, char c) {
+bool Two(char(&sometable)[11][11], char a, char b, char c) {
+	bool flag = true;
 	switch (c) {
 	case 'r': {
 		for (int j = 0; j <2; j++) {
-			sometable[a - 'a' + 1][b - 'a' + 1 + j] = '*';
+			if (sometable[a - 'a' + 1][b - 'a' + 1 + j] == '.' || sometable[a - 'a' + 1][b - 'a' + 1 + j] == '*') { flag = false; }
+			if (flag != false) { sometable[a - 'a' + 1][b - 'a' + 1 + j] = '*'; }
 		}
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 4; j++) {
-				if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+		if (flag != false) {
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 4; j++) {
+					if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+				}
 			}
 		}
 		break;
 	}
 	case 'd': {
 		for (int i = 0; i <2; i++) {
-			sometable[a - 'a' + 1 + i][b - 'a' + 1] = '*';
+			if (sometable[a - 'a' + 1+i][b - 'a' + 1] == '.' || sometable[a - 'a' + 1+i][b - 'a' + 1] == '*') { flag = false; }
+			if (flag != false) {
+				sometable[a - 'a' + 1 + i][b - 'a' + 1] = '*';
+			}
 		}
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 3; j++) {
-				if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+		if (flag != false) {
+			for (int i = 0; i < 4; i++) {
+				for (int j = 0; j < 3; j++) {
+					if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+				}
 			}
 		}
 		break;
 	}
 	}
-
+	return flag;
 }
 bool One(char(&sometable)[11][11], char a, char b, char c) {
 	bool flag = true;
@@ -109,21 +140,25 @@ bool One(char(&sometable)[11][11], char a, char b, char c) {
 	case 'r': {
 		for (int j = 0; j <1; j++) {
 			if (sometable[a - 'a' + 1][b - 'a' + 1 + j] == '.' || sometable[a - 'a' + 1][b - 'a' + 1 + j] == '*') { flag = false; }
-			sometable[a - 'a' + 1][b - 'a' + 1 + j] = '*';
+			if (flag != false) { sometable[a - 'a' + 1][b - 'a' + 1 + j] = '*'; }
 		}
 		break;
 	}
 	case 'd': {
 		for (int i = 0; i <1; i++) {
 			if (sometable[a - 'a' + 1+ i][b - 'a' + 1] == '.' || sometable[a - 'a' +1 + i][b - 'a' + 1] == '*') { flag = false; }
-			sometable[a - 'a' + 1 + i][b - 'a' + 1] = '*';
+			if (flag != false) {
+				sometable[a - 'a' + 1 + i][b - 'a' + 1] = '*';
+			}
 		}
 		break;
 	}
 	}
-	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 3; j++) {
-			if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a'+i][b - 'a'+j] = '.'; }
+	if (flag != false) {
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+			}
 		}
 	}
 	return flag;
@@ -131,41 +166,85 @@ bool One(char(&sometable)[11][11], char a, char b, char c) {
 void Filling(char(&player1)[11][11], char(&player2)[11][11]) {
 	bool flag;
 	char a, b, c;
-	ShowBoard(player1, player2);
-	/*cout << "Enter coordinates and directons for 4 size(r for right and d for down)"<< endl;
-	cin >> a >> b >> c;
-	Four(player1,a,b,c);
+	while (1) {
+		ShowBoard(player1, player2);
+		cout << "Enter coordinates and directons for 4 size(r for right and d for down)" << endl;
+		cin >> a >> b >> c;
+		flag=Four(player1, a, b, c);
+		if (flag == false) {
+			cout << "You can't place your ship here" << endl;
+			system("pause");
+
+			system("cls");
+			continue;
+		}
+		else
+
+			break;
+	}
 	for (int i = 1; i < 3; i++) {
 		system("cls");
-		ShowBoard(player1, player2);
-		cout << "Enter coordinates and directons for 3 size(r for right and d for down)" << endl;
-		cin >> a >> b >> c;
-		Three(player1, a, b, c);
+		while (1) {
+			ShowBoard(player1, player2);
+			cout << "Enter coordinates and directons for 3 size(r for right and d for down)" << endl;
+			cin >> a >> b >> c;
+			flag=Three(player1, a, b, c);
+			if (flag == false) {
+				cout << "You can't place your ship here" << endl;
+				system("pause");
+
+				system("cls");
+				continue;
+			}
+			else
+
+				break;
+		}
 	}
 	for (int i = 1; i < 4; i++) {
 		system("cls");
-		ShowBoard(player1, player2);
-		cout << "Enter coordinates and directons for 2 size(r for right and d for down)" << endl;
-		cin >> a >> b >> c;
-		Two(player1, a, b, c);
-	}*/
+		while (1) {
+			ShowBoard(player1, player2);
+			cout << "Enter coordinates and directons for 2 size(r for right and d for down)" << endl;
+			cin >> a >> b >> c;
+			flag=Two(player1, a, b, c);
+			if (flag == false) {
+				cout << "You can't place your ship here" << endl;
+				system("pause");
+
+				system("cls");
+				continue;
+			}
+			else
+
+				break;
+		}
+	}
 	for (int i = 1; i < 5; i++) {
 		system("cls");
-		ShowBoard(player1, player2);
-		cout << "Enter coordinates and directons for 1 size(r for right and d for down)" << endl;
 		
+		
+		while (1) {
+			ShowBoard(player1, player2);
+			cout << "Enter coordinates and directons for 1 size(r for right and d for down)" << endl;
 			cin >> a >> b >> c;
 			flag = One(player1, a, b, c);
-			if (flag == false) { continue; }
-			else break;
-			// heyhey
-			
-			
-		
+			if (flag == false) {
+				cout << "You can't place your ship here" << endl;
+				system("pause");
+				
+				system("cls");
+				continue;
+			}
+			else
+
+				break;
+		}
 	}
 	system("cls");
 	ShowBoard(player1, player2);
 	cout << "Change places with another player" << endl;
+	system("pause");
 		}
 void Move(char(&player1)[11][11], char(&player2)[11][11], char(&player1_mirr)[11][11] ) {
 	char a, b;
@@ -192,11 +271,11 @@ int main() {
 	ShowBoard(player1, player2);
 	system("cls");
 	Move(player1, player2, player2_mirr);
-	cout << "test";
+
 	
 	
 	
-cout << "test";
+
 
 	return 0;
 }
