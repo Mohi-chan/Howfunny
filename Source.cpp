@@ -37,7 +37,7 @@ bool Four(char(&sometable)[11][11], char a, char b, char c) {
 		if (flag != false) {
 			for (int i = 0; i < 3; i++) {
 				for (int j = 0; j < 6; j++) {
-					if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+					if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0) && (b - 'a' + j<11) && (a - 'a' + i<11)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
 				}
 			}
 		}
@@ -53,7 +53,7 @@ bool Four(char(&sometable)[11][11], char a, char b, char c) {
 		if (flag != false) {
 			for (int i = 0; i < 6; i++) {
 				for (int j = 0; j < 3; j++) {
-					if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+					if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0) && (b - 'a' + j<11) && (a - 'a' + i<11)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
 				}
 			}
 		}
@@ -73,7 +73,7 @@ bool Three(char(&sometable)[11][11], char a, char b, char c) {
 		if (flag != false) {
 			for (int i = 0; i < 3; i++) {
 				for (int j = 0; j < 5; j++) {
-					if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+					if ((sometable[a - 'a' + i][b - 'a' + j] != '*') && (a - 'a' + i != 0) && (b - 'a' + j != 0) && (b - 'a' + j<11) && (a - 'a' + i<11)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
 				}
 			}
 		}
@@ -89,7 +89,10 @@ bool Three(char(&sometable)[11][11], char a, char b, char c) {
 		if (flag != false) {
 			for (int i = 0; i < 5; i++) {
 				for (int j = 0; j < 3; j++) {
-					if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+					if ((sometable[a - 'a' + i][b - 'a' + j] != '*') && (a - 'a' + i != 0) && (b - 'a' + j != 0) && (b - 'a' + j<11) && (a - 'a' + i<11)) {
+						sometable[a - 'a' + i][b - 'a' + j] = '.'; 
+					}
+					
 				}
 			}
 		}
@@ -109,7 +112,7 @@ bool Two(char(&sometable)[11][11], char a, char b, char c) {
 		if (flag != false) {
 			for (int i = 0; i < 3; i++) {
 				for (int j = 0; j < 4; j++) {
-					if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+					if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0) && (b - 'a' + j<11) && (a - 'a' + i<11)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
 				}
 			}
 		}
@@ -125,7 +128,7 @@ bool Two(char(&sometable)[11][11], char a, char b, char c) {
 		if (flag != false) {
 			for (int i = 0; i < 4; i++) {
 				for (int j = 0; j < 3; j++) {
-					if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+					if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0) && (b - 'a' + j<11) && (a - 'a' + i<11)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
 				}
 			}
 		}
@@ -157,7 +160,7 @@ bool One(char(&sometable)[11][11], char a, char b, char c) {
 	if (flag != false) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
+				if (sometable[a - 'a' + i][b - 'a' + j] != '*' && (a - 'a' + i != 0) && (b - 'a' + j != 0) && (b - 'a' + j<11) && (a - 'a' + i<11)) { sometable[a - 'a' + i][b - 'a' + j] = '.'; }
 			}
 		}
 	}
@@ -166,11 +169,19 @@ bool One(char(&sometable)[11][11], char a, char b, char c) {
 void Filling(char(&player1)[11][11], char(&player2)[11][11]) {
 	// каждое заполнение - флаг. если поставленная точка ставится на существующий корабль или местность вокруг, то флаг срабатывает ложью и шаг заполнения выполняется снова
 	bool flag;
+	string str="abcdefgijk", str2="rd";
 	char a, b, c;
 	while (1) {
 		ShowBoard(player1, player2);
 		cout << "Enter coordinates and directons for 4 size(r for right and d for down)" << endl;
 		cin >> a >> b >> c;
+		if ((str.find(a)==-1 )|| (str.find(b) == -1) || (str2.find(c) == -1)){
+			cout << "Wrong coordinates" << endl;
+			system("pause");
+
+			system("cls");
+			continue;
+		}
 flag = Four(player1, a, b, c);
 if (flag == false) {
 	cout << "You can't place your ship here" << endl;
@@ -189,6 +200,13 @@ break;
 			ShowBoard(player1, player2);
 			cout << "Enter coordinates and directons for 3 size(r for right and d for down)" << endl;
 			cin >> a >> b >> c;
+			if ((str.find(a) == -1) || (str.find(b) == -1) || (str2.find(c) == -1)) {
+				cout << "Wrong coordinates" << endl;
+				system("pause");
+
+				system("cls");
+				continue;
+			}
 			flag = Three(player1, a, b, c);
 			if (flag == false) {
 				cout << "You can't place your ship here" << endl;
@@ -208,6 +226,13 @@ break;
 			ShowBoard(player1, player2);
 			cout << "Enter coordinates and directons for 2 size(r for right and d for down)" << endl;
 			cin >> a >> b >> c;
+			if ((str.find(a) == -1) || (str.find(b) == -1) || (str2.find(c) == -1)) {
+				cout << "Wrong coordinates" << endl;
+				system("pause");
+
+				system("cls");
+				continue;
+			}
 			flag = Two(player1, a, b, c);
 			if (flag == false) {
 				cout << "You can't place your ship here" << endl;
@@ -229,6 +254,13 @@ break;
 			ShowBoard(player1, player2);
 			cout << "Enter coordinates and directons for 1 size(r for right and d for down)" << endl;
 			cin >> a >> b >> c;
+			if ((str.find(a) == -1) || (str.find(b) == -1) || (str2.find(c) == -1)) {
+				cout << "Wrong coordinates" << endl;
+				system("pause");
+
+				system("cls");
+				continue;
+			}
 			flag = One(player1, a, b, c);
 			if (flag == false) {
 				cout << "You can't place your ship here" << endl;
