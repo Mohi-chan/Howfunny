@@ -167,7 +167,7 @@ void Filling(char(&player1)[11][11], char(&player2)[11][11]) {
 	// каждое заполнение - флаг. если поставленная точка ставится на существующий корабль или местность вокруг, то флаг срабатывает ложью и шаг заполнения выполняется снова
 	bool flag;
 	char a, b, c;
-	/*while (1) {
+	while (1) {
 		ShowBoard(player1, player2);
 		cout << "Enter coordinates and directons for 4 size(r for right and d for down)" << endl;
 		cin >> a >> b >> c;
@@ -220,7 +220,7 @@ break;
 
 				break;
 		}
-	}*/
+	}
 	for (int i = 1; i < 5; i++) {
 		system("cls");
 		
@@ -251,23 +251,33 @@ void Move_One(char(&player1)[11][11], char(&player2)[11][11], char(&player2_mirr
 			bool flag = true;
 			while (1) {
 				char a, b;
-				system("cls");
-				ShowBoard(player1, player2_mirr);
-				cout << "Make your move. Another player has " << shipsp << " lives left" << endl;
-				cin >> a >> b;
-				if (player2[a - 'a' + 1][b - 'a' + 1] == '*') {
-					player2_mirr[a - 'a' + 1][b - 'a' + 1] = 'X';
-					shipsp = shipsp - 1;
-				}
-				else {
-					flag = false;
-					player2_mirr[a - 'a' + 1][b - 'a' + 1] = '0';
+				
+				while (1) {
 					system("cls");
 					ShowBoard(player1, player2_mirr);
-					cout << "You've missed :( Please change place with another player." << endl;
-					system("pause");
-					system("cls");
+					cout << "Make your move. Another player has " << shipsp << " lives left" << endl;
+					cin >> a >> b;
+					if (player2_mirr[a - 'a' + 1][b - 'a' + 1] == 'X' || player2_mirr[a - 'a' + 1][b - 'a' + 1] == '0') {
+						cout << "You have already been here" << endl;
+						system("pause");
+						continue;
+					}
+					if (player2[a - 'a' + 1][b - 'a' + 1] == '*') {
+						player2_mirr[a - 'a' + 1][b - 'a' + 1] = 'X';
+						shipsp = shipsp - 1;
+						break;
+					}
+					else {
+						flag = false;
+						player2_mirr[a - 'a' + 1][b - 'a' + 1] = '0';
+						system("cls");
+						ShowBoard(player1, player2_mirr);
+						cout << "You've missed :( Please change place with another player." << endl;
+						system("pause");
+						system("cls");
+						break;
 
+					}
 				}
 				if (shipsp == 0) { flag = false; }
 				if (flag == false) { break; }
