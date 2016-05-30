@@ -364,11 +364,23 @@ int main() {
 	int shipsp1 = 20; // количество жизней - клеточек кораблей.
 	int shipsp2 = 20;
 	bool game;
+	cout << "Hello. Here some rules" << endl;
+	cout << "'*' - part of your ship" << endl;
+	cout << "When part of the ship destroyed it will become 'X'" << endl;
+	cout << "When you will fire on water '0' will be shown" << endl;
+	cout << "Enjoy!" << endl;
+	system("pause");
 		while (1) {
 		system("cls");
 		BeforeGame(player1, player2);// заполнение полей
 		BeforeGame(player1_mirr, player2_mirr); // заполнение отображения полей
+		cout << "Player 1, please, put your ships on board" << endl;
+		system("pause");
+		system("cls");
 		Filling(player1, player2_mirr); // расстановка кораблей 1 игроком
+		system("cls");
+		cout << "Player 2." << endl;
+		system("pause");
 		system("cls");
 		Filling(player2, player1_mirr); // расстановка кораблей 2 игроком
 		system("cls");
