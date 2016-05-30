@@ -169,7 +169,7 @@ bool One(char(&sometable)[11][11], char a, char b, char c) {
 void Filling(char(&player1)[11][11], char(&player2)[11][11]) {
 	// каждое заполнение - флаг. если поставленная точка ставится на существующий корабль или местность вокруг, то флаг срабатывает ложью и шаг заполнения выполняется снова
 	bool flag;
-	string str="abcdefgijk", str2="rd";
+	string str="abcdefhgij", str2="rd";
 	char a, b, c;
 	while (1) {
 		ShowBoard(player1, player2);
@@ -281,14 +281,21 @@ break;
 		}
 void Move_One(char(&player1)[11][11], char(&player2)[11][11], char(&player2_mirr)[11][11], int &shipsp) {
 			bool flag = true;
+			string str = "abcdefgihj";
 			while (1) {
 				char a, b;
-				
-				while (1) {
+   				while (1) {
 					system("cls");
 					ShowBoard(player1, player2_mirr);
-					cout << "Make your move. Another player has " << shipsp << " lives left" << endl;
+					cout<<"Your board on the left and your apponent's on the right"<< endl << "Make your move. Another player has " << shipsp << " lives left" << endl;
 					cin >> a >> b;
+					if ((str.find(a) == -1) || (str.find(b) == -1)) {
+						cout << "Wrong coordinates" << endl;
+						system("pause");
+
+						system("cls");
+						continue;
+					}
 					if (player2_mirr[a - 'a' + 1][b - 'a' + 1] == 'X' || player2_mirr[a - 'a' + 1][b - 'a' + 1] == '0') {
 						cout << "You have already been here" << endl;
 						system("pause");
@@ -296,12 +303,14 @@ void Move_One(char(&player1)[11][11], char(&player2)[11][11], char(&player2_mirr
 					}
 					if (player2[a - 'a' + 1][b - 'a' + 1] == '*') {
 						player2_mirr[a - 'a' + 1][b - 'a' + 1] = 'X';
+						player2[a - 'a' + 1][b - 'a' + 1] = 'X';
 						shipsp = shipsp - 1;
 						break;
 					}
 					else {
 						flag = false;
 						player2_mirr[a - 'a' + 1][b - 'a' + 1] = '0';
+						player2[a - 'a' + 1][b - 'a' + 1] = '0';
 						system("cls");
 						ShowBoard(player1, player2_mirr);
 						cout << "You've missed :( Please change place with another player." << endl;
@@ -351,22 +360,30 @@ bool Movement(char(&player1)[11][11], char(&player1_mirr)[11][11], char(&player2
 int main() {
 	// заполнение
 	char player1[11][11] = {' '}, player2[11][11] = { ' ' }, player1_mirr[11][11] = { ' ' }, player2_mirr[11][11] = { ' ' };
-	int shipsp1 = 4;
-	int shipsp2 = 4;
+	char answ;
+	int shipsp1 = 20; // количество жизней - клеточек кораблей.
+	int shipsp2 = 20;
 	bool game;
-	BeforeGame(player1,player2);// заполнение полей
-	BeforeGame(player1_mirr, player2_mirr); // заполнение отображения полей
-	Filling(player1, player2_mirr); // расстановка кораблей 1 игроком
-	system("cls");
-	Filling(player2, player1_mirr); // расстановка кораблей 2 игроком
-	system("cls");
-	ShowBoard(player1, player2);
-	system("cls");
-	game = Movement(player1, player1_mirr, player2, player2_mirr, shipsp1, shipsp2);
-	if (game == true) { cout << "Player 1 win"<< endl; }
-	else cout << "Player 2 win" << endl;
-	
-	
+		while (1) {
+		system("cls");
+		BeforeGame(player1, player2);// заполнение полей
+		BeforeGame(player1_mirr, player2_mirr); // заполнение отображения полей
+		Filling(player1, player2_mirr); // расстановка кораблей 1 игроком
+		system("cls");
+		Filling(player2, player1_mirr); // расстановка кораблей 2 игроком
+		system("cls");
+		ShowBoard(player1, player2);
+		system("cls");
+		game = Movement(player1, player1_mirr, player2, player2_mirr, shipsp1, shipsp2);
+		system("cls");
+		ShowBoard(player1, player2);
+		if (game == true) { cout << "Player 1 win" << endl; }
+		else cout << "Player 2 win" << endl;
+		cout << "One more time? Y or y for 'Yes' and any other key for 'No'" << endl;
+		cin >> answ;
+		if (answ == 'y' || answ == 'Y') { continue; }
+		else break;
+	}
 	
 
 
