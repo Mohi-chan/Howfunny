@@ -1,7 +1,7 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <string>
 using namespace std;
-void BeforeGame(char (&player1)[11][11], char (&player2)[11][11]) { // готовит поля до расставления кораблей. тест изменений
+void BeforeGame(char (&player1)[11][11], char (&player2)[11][11]) { // РіРѕС‚РѕРІРёС‚ РїРѕР»СЏ РґРѕ СЂР°СЃСЃС‚Р°РІР»РµРЅРёСЏ РєРѕСЂР°Р±Р»РµР№. С‚РµСЃС‚ РёР·РјРµРЅРµРЅРёР№
 	char k = 'a';
 	for (int i = 1; i < 11; i++) {
 		player1[i][0] = k;
@@ -11,7 +11,7 @@ void BeforeGame(char (&player1)[11][11], char (&player2)[11][11]) { // готовит п
 		k++;
 	}	
 }
-void ShowBoard(char(&player1)[11][11], char(&player2)[11][11]) { //  показывает две доски на экране
+void ShowBoard(char(&player1)[11][11], char(&player2)[11][11]) { //  РїРѕРєР°Р·С‹РІР°РµС‚ РґРІРµ РґРѕСЃРєРё РЅР° СЌРєСЂР°РЅРµ
 	for (int i = 0; i < 11; i++) {
 		for (int j = 0; j < 11; j++) {
 			cout << player1[i][j] << ' ';
@@ -167,7 +167,7 @@ bool One(char(&sometable)[11][11], char a, char b, char c) {
 	return flag;
 }
 void Filling(char(&player1)[11][11], char(&player2)[11][11]) {
-	// каждое заполнение - флаг. если поставленная точка ставится на существующий корабль или местность вокруг, то флаг срабатывает ложью и шаг заполнения выполняется снова
+	// РєР°Р¶РґРѕРµ Р·Р°РїРѕР»РЅРµРЅРёРµ - С„Р»Р°Рі. РµСЃР»Рё РїРѕСЃС‚Р°РІР»РµРЅРЅР°СЏ С‚РѕС‡РєР° СЃС‚Р°РІРёС‚СЃСЏ РЅР° СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ РєРѕСЂР°Р±Р»СЊ РёР»Рё РјРµСЃС‚РЅРѕСЃС‚СЊ РІРѕРєСЂСѓРі, С‚Рѕ С„Р»Р°Рі СЃСЂР°Р±Р°С‚С‹РІР°РµС‚ Р»РѕР¶СЊСЋ Рё С€Р°Рі Р·Р°РїРѕР»РЅРµРЅРёСЏ РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ СЃРЅРѕРІР°
 	bool flag;
 	string str="abcdefhgij", str2="rd";
 	char a, b, c;
@@ -328,8 +328,8 @@ void Move_One(char(&player1)[11][11], char(&player2)[11][11], char(&player2_mirr
 			}
 		}
 bool Movement(char(&player1)[11][11], char(&player1_mirr)[11][11], char(&player2)[11][11], char(&player2_mirr)[11][11], int &shipsp1, int &shipsp2){
-	bool turn=false; // false - ходит 1, true - ходит 2
-	bool game=true; // продолжение игры. проверяет на наличие оставшихся клеток и присуждает победу. 1 - победил 1, 0 -победил 2
+	bool turn=false; // false - С…РѕРґРёС‚ 1, true - С…РѕРґРёС‚ 2
+	bool game=true; // РїСЂРѕРґРѕР»Р¶РµРЅРёРµ РёРіСЂС‹. РїСЂРѕРІРµСЂСЏРµС‚ РЅР° РЅР°Р»РёС‡РёРµ РѕСЃС‚Р°РІС€РёС…СЃСЏ РєР»РµС‚РѕРє Рё РїСЂРёСЃСѓР¶РґР°РµС‚ РїРѕР±РµРґСѓ. 1 - РїРѕР±РµРґРёР» 1, 0 -РїРѕР±РµРґРёР» 2
 	while (1) {
 		if (shipsp1 == 0) {
 			game = false;
@@ -358,10 +358,10 @@ bool Movement(char(&player1)[11][11], char(&player1_mirr)[11][11], char(&player2
 }
 
 int main() {
-	// заполнение
+	// Р·Р°РїРѕР»РЅРµРЅРёРµ
 	char player1[11][11] = {' '}, player2[11][11] = { ' ' }, player1_mirr[11][11] = { ' ' }, player2_mirr[11][11] = { ' ' };
 	char answ;
-	int shipsp1 = 20; // количество жизней - клеточек кораблей.
+	int shipsp1 = 20; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р¶РёР·РЅРµР№ - РєР»РµС‚РѕС‡РµРє РєРѕСЂР°Р±Р»РµР№.
 	int shipsp2 = 20;
 	bool game;
 	cout << "Hello. Here some rules" << endl;
@@ -372,17 +372,17 @@ int main() {
 	system("pause");
 		while (1) {
 		system("cls");
-		BeforeGame(player1, player2);// заполнение полей
-		BeforeGame(player1_mirr, player2_mirr); // заполнение отображения полей
+		BeforeGame(player1, player2);// Р·Р°РїРѕР»РЅРµРЅРёРµ РїРѕР»РµР№
+		BeforeGame(player1_mirr, player2_mirr); // Р·Р°РїРѕР»РЅРµРЅРёРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РїРѕР»РµР№
 		cout << "Player 1, please, put your ships on board" << endl;
 		system("pause");
 		system("cls");
-		Filling(player1, player2_mirr); // расстановка кораблей 1 игроком
+		Filling(player1, player2_mirr); // СЂР°СЃСЃС‚Р°РЅРѕРІРєР° РєРѕСЂР°Р±Р»РµР№ 1 РёРіСЂРѕРєРѕРј
 		system("cls");
 		cout << "Player 2." << endl;
 		system("pause");
 		system("cls");
-		Filling(player2, player1_mirr); // расстановка кораблей 2 игроком
+		Filling(player2, player1_mirr); // СЂР°СЃСЃС‚Р°РЅРѕРІРєР° РєРѕСЂР°Р±Р»РµР№ 2 РёРіСЂРѕРєРѕРј
 		system("cls");
 		ShowBoard(player1, player2);
 		system("cls");
@@ -391,7 +391,7 @@ int main() {
 		ShowBoard(player1, player2);
 		if (game == true) { cout << "Player 1 win" << endl; }
 		else cout << "Player 2 win" << endl;
-		cout << "One more time? Y or y for 'Yes' and any other key for 'No'" << endl;
+		cout << "One more time? Press Y or y for 'Yes' and any other key for 'No'" << endl;
 		cin >> answ;
 		if (answ == 'y' || answ == 'Y') { continue; }
 		else break;
